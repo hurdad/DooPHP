@@ -97,8 +97,8 @@ class DooWebApp{
                 unset($controller->params['__routematch']);
             }
 
-            if($_SERVER['REQUEST_METHOD']==='PUT')
-                $controller->init_put_vars();
+           
+            $controller->init_put_vars();
 
             //before run, normally used for ACL auth
             if($clsnameDefined){
