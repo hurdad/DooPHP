@@ -73,6 +73,7 @@ class DooController {
      * @var array
      */
     public $puts;
+    public $data;
 
     /**
      * Extension name (.html, .json, .xml ,...) found in the URI. Routes can be specified with a string or an array as matching extensions
@@ -112,14 +113,16 @@ class DooController {
      * @deprecated deprecated since version 1.3
      */
     public function init_put_vars(){
-        parse_str(file_get_contents('php://input'), $this->puts);
+	$data = file_get_contents('php://input');
+	$this->data = json_decode($data, true);
     }
 
     /**
      * Set PUT request variables in a controller. This method is to be used by the main web app class.
      */
     public function initPutVars(){
-        parse_str(file_get_contents('php://input'), $this->puts);
+        $data = file_get_contents('php://input');
+	$this->data = json_decode($data, true);
     }
 
     /**
